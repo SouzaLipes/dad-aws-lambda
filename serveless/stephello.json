@@ -1,0 +1,32 @@
+{
+    "Comment": "Exemplo de máquina de estado para orquestrar funções Lambda",
+    "StartAt": "Wait",
+    "States": {
+      "Wait": {
+        "Type": "Wait",
+        "Seconds": 5,
+        "Next": "InvokeHelloFunction"
+      },
+      "InvokeHelloFunction": {
+        "Type": "Task",
+        "Resource": "arn:aws:lambda:sa-east-1:577163328740:function:aws-dad-teste-dev-hello:$LATEST",
+        "Next": "Success",
+        "Catch": [
+          {
+            "ErrorEquals": [
+              "States.ALL"
+            ],
+            "Next": "ErrorHandler"
+          }
+        ]
+      },
+      "Success": {
+        "Type": "Succeed"
+      },
+      "ErrorHandler": {
+        "Type": "Fail",
+        "Error": "UnhandledError",
+        "Cause": "Um erro não tratado ocorreu durante a execução da máquina de estado"
+      }
+    }
+  }
