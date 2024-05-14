@@ -12,14 +12,10 @@ module.exports.hello = async (event) => {
       2
     ),
   };
-
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
 };
 
 module.exports.calcularMedia= async (event) => {
   try{
-    exports.handler = async (event) => {
       const nota1 = event.nota1;
       const nota2 = event.nota2;
 
@@ -32,7 +28,6 @@ module.exports.calcularMedia= async (event) => {
           media: media
         })
       };
-    };
   }catch (err) {
     return err;
   }

@@ -9,7 +9,7 @@ const MyComponent = () => {
 
   const calcularMedia = async () => {
     try {
-      const response = await axios.post('URL_DA_SUA_FUNCAO_LAMBDA', {
+      const response = await axios.post('https://cx4ihg25343nqyhahd2ndrilra0gccto.lambda-url.sa-east-1.on.aws/', {
         nota1: parseFloat(nota1),
         nota2: parseFloat(nota2)
       });
@@ -22,16 +22,16 @@ const MyComponent = () => {
 
   const boasVindas = async () => {
     try {
-      const response = await axios.get('URL_DA_SUA_FUNCAO_LAMBDA');
+      const response = await axios.get('https://al3ijok58l.execute-api.sa-east-1.amazonaws.com/dev/hello');
 
-      setMensagemBoasVindas(response.data.message);
+      setMensagemBoasVindas(response.message);
     } catch (error) {
       console.error('Ocorreu um erro ao buscar a mensagem de boas vindas:', error);
     }
   }
 
 
-  //useEffect(() => boasVindas(), [mesnsagemBoasVindas]);
+  useEffect(() => boasVindas(), [mesnsagemBoasVindas]);
 
   return (
     <div>
